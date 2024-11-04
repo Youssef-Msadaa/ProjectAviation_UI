@@ -1,0 +1,10 @@
+.flight-status-form{
+    background-color: #f8f9fa;
+    margin-top: -1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: -1px;
+    z-index: 2;
+}
+.custom-form-background{
+    background-color: #f8f9fa;
+}

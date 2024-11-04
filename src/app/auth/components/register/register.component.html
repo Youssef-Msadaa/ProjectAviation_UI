@@ -1,0 +1,196 @@
+<nav class="navbar bg-body-tertiary" style="background-color: #e60000;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="tunisair_logo_1.png" alt="Logo" width="120" height="30" class="d-inline-block align-text-top">
+    </a>
+  </div>
+</nav>
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header text-center">
+          <h3>Let's Create Your Credentials</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <!-- Credentials Section -->
+            <div class="form-section">
+              <h5>Credentials</h5>
+              <!-- Email -->
+              <div class="form-group mb-3">
+                <label for="email">Email address</label>
+                <input
+                  type="email"
+                  id="email"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder="Enter your email"
+                  [ngClass]="{ 'is-invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched }"
+                />
+                <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="invalid-feedback">
+                  A valid email is required.
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    formControlName="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                    [ngClass]="{ 'is-invalid': registerForm.get('password')?.invalid && registerForm.get('password')?.touched }"
+                  />
+                  <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="invalid-feedback">
+                    Password must be at least 6 characters.
+                  </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="col-md-6 mb-3">
+                  <label for="confirmPassword">Retype Password</label>
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    formControlName="confirmPassword"
+                    class="form-control"
+                    placeholder="Retype your password"
+                    [ngClass]="{ 'is-invalid': registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched }"
+                  />
+                  <div *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched" class="invalid-feedback">
+                    Passwords do not match.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Country Code & Mobile -->
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="country">Country</label>
+                  <select
+                    id="country"
+                    formControlName="country"
+                    class="form-control"
+                    [ngClass]="{
+                      'is-invalid': registerForm.get('country')?.invalid &&
+                      registerForm.get('country')?.touched
+                    }"
+                  >
+                    <option value="">Select your country</option>
+                    <option *ngFor="let country of countries" [value]="country.name">
+                      {{ country.name }}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="registerForm.get('country')?.invalid && registerForm.get('country')?.touched"
+                    class="invalid-feedback"
+                  >
+                    Country is required.
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="phone">Phone Number</label>
+                  <input
+                    type="text"
+                    id="phone"
+                    formControlName="phone"
+                    class="form-control"
+                    placeholder="Enter mobile number"
+                    [ngClass]="{ 'is-invalid': registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched }"
+                    />
+                    <div *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched" class="invalid-feedback">
+                    Phone number must be exactly 8 digits.
+                    </div>
+                </div>
+              </div>
+              
+            </div>
+
+            <!-- Personal Details Section -->
+            <div class="form-section mt-4">
+              <h5>Your Personal Details</h5>
+
+              <div class="row">
+                <!-- First Name and Last Name -->
+
+                <div class="col-md-4 mb-3">
+                  <label for="FirstName">First Name</label>
+                  <input
+                    type="text"
+                    id="FirstName"
+                    formControlName="FirstName"
+                    class="form-control"
+                    placeholder="Enter first name"
+                  />
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label for="LastName">Last Name</label>
+                  <input
+                    type="text"
+                    id="LastName"
+                    formControlName="LastName"
+                    class="form-control"
+                    placeholder="Enter last name"
+                  />
+                </div>
+              </div>
+
+              <!-- Date of Birth and Gender -->
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="dob">Date of Birth</label>
+                  <input
+                    type="date"
+                    id="dob"
+                    formControlName="dob"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="gender">Gender (optional)</label>
+                  <div class="form-check">
+                    <input
+                      type="radio"
+                      id="male"
+                      formControlName="gender"
+                      class="form-check-input"
+                      value="Male"
+                    />
+                    <label class="form-check-label" for="male">Male</label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      type="radio"
+                      id="female"
+                      formControlName="gender"
+                      class="form-check-input"
+                      value="Female"
+                    />
+                    <label class="form-check-label" for="female">Female</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid">Register</button>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer text-center">
+          <a routerLink="/auth/login">Already have an account? Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  

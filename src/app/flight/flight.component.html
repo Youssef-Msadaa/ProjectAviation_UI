@@ -1,0 +1,86 @@
+<form class="row p-3 custom-form-background border rounded align-items-end" [formGroup]="flightForm" (ngSubmit)="onSearch()">
+
+  <!-- Dropdown to select search type -->
+  <div class="form-group col-md-2 mb-3">
+    <label for="searchType" class="form-label">Search by</label>
+    <select formControlName="searchType" class="form-select" id="searchType">
+      <option value="One way">One way</option>
+      <option value="Round trip">Round trip</option>
+      <option value="Multidestination">Multidestination</option>
+    </select>
+  </div>
+
+  <!-- One way form (conditionally visible) -->
+  <ng-container *ngIf="flightForm.get('searchType')?.value === 'One way'">
+    <div class="form-group col-md-2 mb-3">
+      <label for="fromLocation" class="form-label">From</label>
+      <input type="text" class="form-control" formControlName="fromLocation" placeholder="Djerba">
+    </div>
+    <div class="form-group col-md-2 mb-3">
+      <label for="toLocation" class="form-label">To</label>
+      <input type="text" class="form-control" formControlName="toLocation" placeholder="Destination">
+    </div>
+    <div class="form-group col-md-2 mb-3">
+      <label for="travelDates" class="form-label">Dates</label>
+      <input type="date" class="form-control" formControlName="travelDates">
+    </div>
+  </ng-container>
+
+  <!-- Round trip form (conditionally visible) -->
+  <ng-container *ngIf="flightForm.get('searchType')?.value === 'Round trip'">
+    <div class="form-group col-md-2 mb-3">
+      <label for="fromLocation" class="form-label">From</label>
+      <input type="text" class="form-control" formControlName="fromLocation" placeholder="Djerba">
+    </div>
+    <div class="form-group col-md-2 mb-3">
+      <label for="toLocation" class="form-label">To</label>
+      <input type="text" class="form-control" formControlName="toLocation" placeholder="Destination">
+    </div>
+    
+    <!-- Date Range Picker -->
+    <div class="form-group col-md-4 mb-3"> <!-- Adjusted column size for balance -->
+      <label for="roundTripDates" class="form-label">Select your trip dates</label>
+      <mat-form-field class="w-100" appearance="fill"> <!-- Ensures full width inside col -->
+        <mat-label>Round-trip dates</mat-label>
+        <mat-date-range-input [rangePicker]="picker" formGroupName="roundTripDates">
+          <input matStartDate placeholder="Departure date" formControlName="startDate">
+          <input matEndDate placeholder="Return date" formControlName="endDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+  </ng-container>
+
+  <!-- Multidestination form (conditionally visible) -->
+  <ng-container *ngIf="flightForm.get('searchType')?.value === 'Multidestination'">
+    <div class="form-group col-md-2 mb-3">
+      <label for="fromLocation" class="form-label">From</label>
+      <input type="text" class="form-control" formControlName="fromLocation" placeholder="Djerba">
+    </div>
+    <div class="form-group col-md-2 mb-3">
+      <label for="toLocation" class="form-label">To</label>
+      <input type="text" class="form-control" formControlName="toLocation" placeholder="Destination">
+    </div>
+    <div class="form-group col-md-2 mb-3">
+      <label for="travelDates" class="form-label">Dates</label>
+      <input type="date" class="form-control" formControlName="travelDates">
+    </div>
+  </ng-container>
+
+  <!-- Passengers dropdown (always visible) -->
+  <div class="form-group col-md-2 mb-3">
+    <label for="passengers" class="form-label">Passengers</label>
+    <select class="form-select" formControlName="passengers">
+      <option value="1">1 Passenger</option>
+      <option value="2">2 Passengers</option>
+      <option value="3">3 Passengers</option>
+    </select>
+  </div>
+
+  <!-- Search button -->
+  <div class="col-md-2 d-flex align-items-end">
+    <button class="btn btn-primary w-100">Search flights</button>
+  </div>
+
+</form>

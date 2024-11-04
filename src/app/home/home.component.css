@@ -1,0 +1,47 @@
+.custom-img {
+    width: 100%;         /* S'assure que l'image prend toute la largeur */
+    max-height: 450px;    /* Limite la hauteur à 500px (modifiable selon tes besoins) */
+    object-fit: cover;    /* Recadre l'image pour qu'elle couvre bien toute la zone sans déformation */
+  }
+
+  .container-fluid {
+    margin: 0;            /* Évite les marges sur les côtés */
+    padding: 0;           /* Supprime les espacements intérieurs */
+  }
+
+  /* Flight Search Navbar */
+.flight-search {
+  position: relative;
+  margin-top: -70px; /* Adjust the negative margin to hover over the image */
+  /* background-color: transparent; Background color to make it visible over the image */
+  z-index: 30; /* Ensure it is on top of the image */
+  padding: 20px; /* Padding inside the navbar */
+  border-radius: 15px; /* Slightly rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for emphasis */
+  height: 50px; /* Height of the navbar */
+}
+
+/* Optional: Styling the nav-tabs to make it pop */
+.nav-tabs {
+  margin-left: -9px;
+  border-bottom: 0;
+  /*background-color:transparent;*/
+  border-radius: 20px;
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid #f8f9fa;
+  margin-right: 5px;
+  border-radius: 50px;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.nav-item {
+  margin-bottom: 0;
+  background-color: #f8f9fa;
+  margin-right: 5px;
+}

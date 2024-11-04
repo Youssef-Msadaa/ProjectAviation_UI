@@ -1,0 +1,118 @@
+/* Navbar styling */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-link {
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+}
+
+.dropdown-menu .dropdown-item {
+  color: #333;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Main Image Container */
+.main-image-container {
+  position: relative;
+  max-height: 500px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.main-image {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  opacity: 0.8;
+  object-position: bottom;
+}
+
+/* Overlay Text Styling */
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  max-width: 350px;
+  border-radius: 8px;
+}
+
+.overlay-text h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.overlay-text p {
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+.overlay-text .btn {
+  font-size: 1em;
+  background-color: #007bff;
+  border: none;
+}
+
+.overlay-text .btn:hover {
+  background-color: #0056b3;
+}
+
+/* Button Enhancements */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.flight-search {
+    position: relative;
+    margin-top: -70px; /* Adjust the negative margin to hover over the image */
+    /* background-color: transparent; Background color to make it visible over the image */
+    z-index: 30; /* Ensure it is on top of the image */
+    padding: 20px; /* Padding inside the navbar */
+    border-radius: 15px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for emphasis */
+    height: 50px; /* Height of the navbar */
+  }
+  
+  .nav-tabs {
+    margin-left: -12px;
+    border-bottom: 0;
+    /*background-color:transparent;*/
+    border-radius: 20px;
+  }
+  #tab{
+    background-color: #f8f9fa;
+    margin: 1px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+  }

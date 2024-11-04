@@ -1,0 +1,85 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="tunisair_logo_1.png" alt="tunisair_logo_1" width="130" height="30" class="d-inline-block align-text-top">
+    </a>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink=[flight]> Réservation / Rechercher un vol</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"> Check-in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Reservations</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Other Informations
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">Offres spéciales</a></li>
+            <li><a class="dropdown-item" href="#">Programme de Fidélité</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">More Information</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="d-flex gap-2 align-items-center">
+      <button class="btn btn-outline-primary" type="button">Language</button>
+      <div class="dropdown ms-3">
+        <button class="btn btn-outline-primary dropdown-toggle"    type="button" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+          Achref Gattoussi
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownUser">
+          <li><button class="dropdown-item">View Profile</button></li>
+          <li><button class="dropdown-item">Log Out</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Image with Overlay Text -->
+<div class="main-image-container">
+  <img src="la-vue-depuis-sidi-bou-said-1024x683.webp" alt="Welcome To our Tunisian Airlines" class="img-fluid main-image">
+  <div class="overlay-text">
+    <h2>Djerba</h2>
+    <p>Vister la tunisie .Découvrez la magie de la Tunisie avec Tunisair! Plages paradisiaques, sites historiques, et délices culinaires vous attendent. Profitez de nos offres exclusives en ligne pour une expérience inoubliable.</p>
+    <a href="#" class="btn btn-primary">Réservez dès maintenant !</a>
+  </div>
+</div>
+
+<div class="container-xxl flight-search p-3">
+  <!-- Top Navigation Bar with Flight, Check-in, Manage Booking, Flight Status -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item" id="tab" (click)="selectedTab = 'flights'">
+          <a class="nav-link" [class.active]="selectedTab === 'flights'">Flight</a>
+        </li>
+        <li class="nav-item" id="tab" (click)="selectedTab = 'flightstatus'">
+          <a class="nav-link" [class.active]="selectedTab === 'flightstatus'">Flight Status</a>
+        </li>
+      </ul>
+
+      <div>
+        <div *ngIf="selectedTab === 'flights'">
+          <app-flight></app-flight>
+        </div>
+        <div *ngIf="selectedTab === 'flightstatus'">
+          <app-flight-status></app-flight-status>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

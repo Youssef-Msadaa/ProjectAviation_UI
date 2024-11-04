@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div class="container-fluid p-0">
+    <img src="Leonardo_Phoenix_A_warm_and_inviting_digital_illustration_serv_0.jpg" 
+         alt="Welcome To our Tunisian Airlines"  
+         class="img-fluid custom-img">
+</div>
+<div class="container-xxl flight-search p-3">
+  <!-- Top Navigation Bar with Flight, Check-in, Manage Booking, Flight Status -->
+    <div class="row mb-4">
+      <div class="col-12  ">
+        <ul class="nav nav-tabs">
+          <li class="nav-item" (click)="selectedTab = 'flights'">
+            <a class="nav-link " [class.active]="selectedTab === 'flights'">Flight</a>
+          </li>
+          <li class="nav-item" (click)="selectedTab = 'checkin'">
+            <a class="nav-link" [class.active]="selectedTab === 'checkin'">Check-in / Manage booking</a>
+          </li>
+          <li class="nav-item" (click)="selectedTab = 'flightstatus'">
+            <a class="nav-link" [class.active]="selectedTab === 'flightstatus'">Flight status</a>
+          </li>
+        </ul>
+
+        <div  >
+          <div *ngIf="selectedTab === 'flights'">
+            <app-flight></app-flight>
+          </div>
+          <div *ngIf="selectedTab === 'checkin'">
+            <app-check-in></app-check-in>
+          </div>
+          <div *ngIf="selectedTab === 'flightstatus'">
+            <app-flight-status></app-flight-status>
+          </div>
+
+      </div>
+    </div>  

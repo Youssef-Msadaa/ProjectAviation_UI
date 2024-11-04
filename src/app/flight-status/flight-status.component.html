@@ -1,0 +1,53 @@
+<div class="flight-status-form">
+  <form class="row p-3 custom-form-background border rounded" [formGroup]="flightStatusForm" (ngSubmit)="onSearch()">
+    
+    <!-- Dropdown to select search type -->
+    <div class="form-group col-md-2 mb-2">
+      <label for="searchType" class="form-label">Search by</label>
+      <select formControlName="searchType" class="form-select" id="searchType">
+        <option value="arrival">Arrival</option>
+        <option value="departure">Departure</option>
+        <option value="flightNumber">Flight Number</option>
+        <option value="route">Route</option>
+      </select>
+    </div>
+
+    <!-- Conditional Input Fields Based on Search Type -->
+    <div class="form-group col-md-3 mb-3" *ngIf="flightStatusForm.get('searchType')?.value === 'arrival'">
+      <label for="arrival" class="form-label">Arrival Destination</label>
+      <input type="text" formControlName="arrival" class="form-control" id="arrival" placeholder="Enter Arrival Destination">
+    </div>
+
+    <div class="form-group col-md-3 mb-3" *ngIf="flightStatusForm.get('searchType')?.value === 'departure'">
+      <label for="departure" class="form-label">Departure Location</label>
+      <input type="text" formControlName="departure" class="form-control" id="departure" placeholder="Enter Departure Location">
+    </div>
+
+    <div class="form-group col-md-3 mb-3" *ngIf="flightStatusForm.get('searchType')?.value === 'flightNumber'">
+      <label for="flightNumber" class="form-label">Flight Number</label>
+      <input type="text" formControlName="flightNumber" class="form-control" id="flightNumber" placeholder="Enter Flight Number">
+    </div>
+
+    <div class="form-group col-md-3 mb-2" *ngIf="flightStatusForm.get('searchType')?.value === 'route'">
+      <label for="routeDeparture" class="form-label">Departure Location</label>
+      <input type="text" formControlName="departure" class="form-control" id="routeDeparture" placeholder="Enter Departure Location">
+    </div>
+    
+    <div class="form-group col-md-3 mb-2" *ngIf="flightStatusForm.get('searchType')?.value === 'route'">
+      <label for="routeArrival" class="form-label">Arrival Destination</label>
+      <input type="text" formControlName="arrival" class="form-control" id="routeArrival" placeholder="Enter Arrival Destination">
+    </div>
+
+    <!-- Static Date Section (always visible) -->
+    <div class="form-group col-md-2 mb-2">
+      <label for="date" class="form-label">Date</label>
+      <input type="date" formControlName="date" class="form-control" id="date">
+    </div>
+
+    <!-- Search Button (always visible) -->
+    <div class="form-group col-md-3 align-self-end mb-3">
+      <button type="submit" class="btn btn-danger btn-block w-100 py-2">Search</button>
+    </div>
+
+  </form>
+</div>
