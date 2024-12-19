@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { UserServiceService } from '../user-service.service';
+import { NavbarComponent } from "../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-user-dashboard',
@@ -18,7 +19,8 @@ import { UserServiceService } from '../user-service.service';
     CheckInComponent,
     FlightStatusComponent,
     CommonModule,
-  ],
+    NavbarComponent
+],
   templateUrl: './user-dashboard.component.html',
   styleUrl: './user-dashboard.component.css',
 })

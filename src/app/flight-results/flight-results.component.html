@@ -1,0 +1,170 @@
+<app-navbar></app-navbar>
+<mat-stepper [linear]="true" #stepper>
+  <div class="container my-4">
+    <!-- Heading -->
+    <h2 class="text-center mb-4">Flight Search Results</h2>
+
+    <!-- Loader -->
+    <div *ngIf="isLoading" class="text-center my-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2 text-muted">Loading flight results...</p>
+    </div>
+
+    <!-- Error -->
+    <div *ngIf="error" class="alert alert-danger text-center">
+      {{ error }}
+    </div>
+
+    <!-- Flight Results -->
+    <mat-step>
+      <ng-template matStepLabel>Choisir un vol</ng-template>
+
+      <div *ngIf="flights.length > 0" class="row gy-3">
+        <!-- Each Flight Card -->
+        <div *ngFor="let flight of flights" class="col-12">
+          <div class="card shadow-sm p-3">
+            <div class="row align-items-center">
+              <!-- Airline and Logo -->
+              <div class="col-2 d-flex align-items-center">
+                <img
+                  src="assets/airfrance-logo.png"
+                  alt="{{ flight.airline }}"
+                  height="30"
+                  class="me-2"
+                />
+                <strong class="text-primary">{{ flight.airline }}</strong>
+              </div>
+
+              <!-- Departure -->
+              <div class="col-2">
+                <div>
+                  <strong>Departure:</strong>
+                  <span class="text-secondary">
+                    {{ flight.timeDeparture }} ({{ flight.from }})
+                  </span>
+                </div>
+              </div>
+
+              <!-- Duration -->
+              <div class="col-2">
+                <div>
+                  <strong>Duration:</strong>
+                  <span class="text-secondary">2h40</span>
+                </div>
+              </div>
+
+              <!-- Arrival -->
+              <div class="col-2">
+                <div>
+                  <strong>Arrival:</strong>
+                  <span class="text-secondary">
+                    {{ flight.estimatedArrival }} ({{ flight.to }})
+                  </span>
+                </div>
+              </div>
+
+              <!-- Economy Class -->
+              <div class="col-2">
+                <div class="border p-2 d-flex justify-content-between align-items-center">
+                  <span class="text-secondary fs-6">Economy</span>
+                  <strong class="text-primary">{{ flight.economyClassPrice }} TND</strong>
+                  <button class=mat-raised-button (click)="selectFlight(flight, 'economy')">Reserve</button>
+                </div>
+              </div>
+
+              <!-- Business Class -->
+              <div class="col-2">
+                <div class="border p-2 d-flex justify-content-between align-items-center">
+                  <span class="text-secondary fs-6">Business</span>
+                  <strong class="text-primary">{{ flight.businessClassPrice }} TND</strong>
+                  <button class=mat-raised-button (click)="selectFlight(flight, 'business')">Reserve</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Results -->
+      <div *ngIf="!isLoading && flights.length === 0" class="alert alert-info text-center">
+        No flights found for your search criteria.
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperNext [disabled]="!selectedFlight">Suivant</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Choose Your Seat</ng-template>
+    
+      <div class="container my-4">
+        <h3 class="text-center mb-4">Available Seats ({{ seatClass | titlecase }} Class)</h3>
+    
+        <!-- Loader -->
+        <div *ngIf="isLoading" class="text-center my-3">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p class="mt-2 text-muted">Loading seats...</p>
+        </div>
+    
+        <!-- Error Message -->
+        <div *ngIf="error" class="alert alert-danger text-center">
+          {{ error }}
+        </div>
+    
+        <!-- Available Seats -->
+        <div *ngIf="availableSeats.length > 0">
+          <div class="row gy-2">
+            <div *ngFor="let seat of availableSeats" class="col-2">
+              <button
+                class="btn"
+                [class.btn-primary]="seat.available"
+                [class.btn-secondary]="!seat.available"
+                [disabled]="!seat.available"
+                [class.active]="selectedSeat === seat.seatId"
+                (click)="seat.available && selectSeat(seat.seatId)"
+              >
+                {{ seat.label }}
+              </button>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <button
+              class="btn btn-success"
+              [disabled]="!selectedSeat"
+              (click)="stepper.next()"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+    
+        <!-- No Seats Available -->
+        <div *ngIf="!isLoading && availableSeats.length === 0" class="alert alert-info text-center">
+          No available seats for this class.
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <div *ngIf="!userName" class="alert alert-warning text-center">
+        You must be logged in to complete the payment and confirm the reservation.
+      </div>
+    <!-- Reservation et paiement -->
+    <div *ngIf="selectedSeat && isLoggedIn" class="mt-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Ticket Details</h5>
+          <p><strong>Full Name:</strong> {{ userName }}</p> <!-- Showing the user's name -->
+          <p><strong>Seat:</strong> {{ selectedSeat }}</p>
+          <p><strong>Flight:</strong> {{ selectedFlight.airline }} ({{ selectedFlight.flightNumber }})</p>
+          <p><strong>Departure:</strong> {{ selectedFlight.timeDeparture }} from {{ selectedFlight.from }}</p>
+          <button mat-raised-button color="primary" (click)="confirmAndPay()">Confirm & Pay</button>
+        </div>
+      </div>
+    </div>
+  </mat-step>
+    
+  </div>
+</mat-stepper>

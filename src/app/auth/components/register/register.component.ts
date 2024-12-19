@@ -7,8 +7,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import '@angular/router'
 import { AuthService } from '../../services/authen.service';
 import { UserServiceService } from '../../../user-service.service';
+import { RouterLink } from '@angular/router';
 interface Country {
   name: string;
   code: string;
@@ -19,7 +21,7 @@ interface Country {
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule], // Import necessary modules
+  imports: [CommonModule, ReactiveFormsModule,RouterLink], // Import necessary modules
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flight',
@@ -16,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 export class FlightComponent implements OnInit {
   flightForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder ,private router : Router) { }
 
   ngOnInit() {
     this.flightForm = this.fb.group({
@@ -43,18 +44,32 @@ export class FlightComponent implements OnInit {
         
 
 
-  onSearch() {
-    const formValue = this.flightForm.value;
-    console.log('Form Values:', formValue);
+onSearch() {
+  const formValue = this.flightForm.value;
 
-    // Access dates based on the search type
-    if (formValue.searchType === 'Round trip') {
-      console.log('Round trip dates:', formValue.roundTripDates.startDate, formValue.roundTripDates.endDate);
-    } else {
-      console.log('Travel date:', formValue.travelDates);
-    }
+  // Adjusting the search object based on the search type (One way or Round trip)
+  const searchParams: any = {
+    fromLocation: formValue.fromLocation,
+    toLocation: formValue.toLocation,
+    passengers: formValue.passengers, // Sending the passengers field
+  };
 
-    // Handle your search logic here
+  // For One-way, just add travelDates
+  if (formValue.searchType === 'One way') {
+    searchParams.travelDates = formValue.travelDates;
+  } 
+  // For Round trip, add both travelDates and roundTripDates
+  else if (formValue.searchType === 'Round trip') {
+    searchParams.travelDates = formValue.roundTripDates.startDate;
+    searchParams.roundTripDates = formValue.roundTripDates; // Send both startDate and endDate
   }
+
+  // Make the router navigate with the adjusted parameters
+  this.router.navigate(['flight-search'], { queryParams: searchParams });
+
+  // Log the search parameters for debugging
+  console.log('Search Parameters:', searchParams);
+}
+
 }
 

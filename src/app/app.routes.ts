@@ -6,6 +6,10 @@ import { EmailVerificationComponentComponent } from './email-verification-compon
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { LoginComponent } from './auth/components/login/login.component';
+import { FlightstatusResultsComponent } from './flightstatus-results/flightstatus-results.component';
+import { FlightResultsComponent } from './flight-results/flight-results.component';
+import { TestComponent } from './test/test.component';
+
 export const routes: Routes = [
   {
     path: 'auth',
@@ -17,8 +21,17 @@ export const routes: Routes = [
     component: UserDashboardComponent,
     canActivate: [AuthGuard],
   },
+
+    {path:"flightstatus-result",component:FlightstatusResultsComponent},
   {
     path: 'verify/:uniqueString',
     component: EmailVerificationComponentComponent,
   },
+  { path:"flight-search",component:FlightResultsComponent
+
+  },
+  
+  {path:"test",component:TestComponent
+  }
+
 ];

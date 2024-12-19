@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+<app-flight-status [initialFlightNumber]="flightNumber"></app-flight-status>
+
+<!-- Flight Card Section -->
+<div *ngFor="let flight of flightData" class="row flight-card en-vol mb-3">
+  <!-- Left Section: Status and Flight Details -->
+  <div class="col-md-4">
+    <div class="wrapper">
+      <!-- Flight Date -->
+      <div class="flight-date mb-2">
+        <span class="badge bg-secondary">
+          {{ flight.flight_date | date:'fullDate' }}
+        </span>
+      </div>
+
+      <!-- Flight Number -->
+      <div class="num-vol mt-2">
+        <strong>Flight:</strong> {{ flight.flight.iata }}
+      </div>
+
+      <!-- Flight Status -->
+      <div 
+        class="etat-vol mt-3 wh-25" 
+        [ngClass]="{
+          'vol-program': flight.flight_status === 'scheduled',
+          'vol-delayed': flight.flight_status === 'diverted',
+          'vol-canceled': flight.flight_status === 'canceled',
+          'vol-landed': flight.flight_status === 'landed',
+          'vol-in-sky': flight.flight_status === 'active',
+          'vol-incident': flight.flight_status === 'incident'
+        }">
+        <span>
+          {{ flight.flight_status | uppercase }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Section: Departure and Arrival Details -->
+  <div class="col-md-8 bordred">
+    <div class="wrapper">
+      <!-- Flight Info -->
+      <div class="flight-info mb-5">
+        <div class="dates">
+          <!-- Departure -->
+          <div class="date-prog">
+            <strong>Departure:</strong> {{ flight.departure.scheduled | date:'shortTime' }}
+            <span class="text-muted d-block">Programmed</span>
+          </div>
+          <div class="date-estime">
+            {{ flight.departure.estimated | date:'shortTime' }}
+            <span class="text-muted d-block">Estimated</span>
+          </div>
+        </div>
+        
+        <div class="plane-guide">
+          <span class="plane">
+            <i class="fas fa-plane"></i>
+          </span>
+        </div>
+
+        <div class="dates">
+          <!-- Arrival -->
+          <div class="date-prog">
+            <strong>Arrival:</strong> {{ flight.arrival.scheduled | date:'shortTime' }}
+            <span class="text-muted d-block">Programmed</span>
+          </div>
+          <div class="date-estime">
+            {{ flight.arrival.estimated | date:'shortTime' }}
+            <span class="text-muted d-block">Estimated</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Departure and Arrival Airports -->
+      <div class="flight-places">
+        <div class="place">
+          <strong>From:</strong> {{ flight.departure.airport }} ({{ flight.departure.iata }})
+        </div>
+        <div class="estimation">
+          <strong>Estimated Time:</strong> <span class="text-primary">{{ calculateTimeDifference(flight.arrival.scheduled,flight.departure.scheduled) }}</span>
+        </div>
+        <div class="place">
+          <strong>To:</strong> {{ flight.arrival.airport }} ({{ flight.arrival.iata }})
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

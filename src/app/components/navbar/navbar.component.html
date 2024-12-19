@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+<nav *ngIf="!isloggedin" class="navbar navbar-expand-lg bg-body-tertiary shadow">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="tunisair_logo_1.png" alt="tunisair_logo_1" width="130" height="30" class="d-inline-block align-text-top">
@@ -30,14 +31,84 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
         </ul>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button class="btn btn-primary me-md-2" type="button" routerLink="/auth/login">Connect</button>
-        <button class="btn btn-primary" type="button">Language</button>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+
+  <nav *ngIf="isloggedin" class="navbar navbar-expand-lg bg-body-tertiary shadow">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img
+          src="tunisair_logo_1.png"
+          alt="tunisair_logo_1"
+          width="130"
+          height="30"
+          class="d-inline-block align-text-top"
+        />
+      </a>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="[flight]">
+              Réservation / Rechercher un vol</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> Check-in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Reservations</a>
+          </li>
+  
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Other Informations
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item">Offres spéciales</a></li>
+              <li><a class="dropdown-item" href="#">Programme de Fidélité</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">More Information</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex gap-2 align-items-center">
+        <div class="dropdown ms-3">
+          <button
+            class="btn btn-outline-primary dropdown-toggle"
+            type="button"
+            id="dropdownUser"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ userName }}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownUser">
+            <li><button class="dropdown-item">View Profile</button></li>
+            <li>
+              <button class="dropdown-item" (click)="logout()">Log Out</button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>

@@ -1,0 +1,105 @@
+/* General Flight Card Styling */
+.flight-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.flight-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Status Color Coding */
+.vol-program {
+  background-color: orange;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.vol-delayed, .vol-canceled {
+  background-color: red;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.vol-landed {
+  background-color: green;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.vol-in-sky {
+  background-color: blue;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.vol-incident {
+  background-color: darkred;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+/* Flight Info Styling */
+.flight-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flight-info .dates {
+  text-align: center;
+  font-size: 14px;
+}
+
+.flight-info .plane {
+  font-size: 24px;
+  color: gray;
+}
+
+/* Departure and Arrival Styling */
+.flight-places {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.flight-places .place {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.flight-places .estimation {
+  font-size: 16px;
+  color: darkgray;
+}
+
+.flight-places .text-primary {
+  font-weight: bold;
+  color: #0056b3;
+}
+
+/* Flight Date Styling */
+.flight-date .badge {
+  font-size: 14px;
+  padding: 6px 12px;
+  background-color: #6c757d;
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+}
+app-flight-status {
+  padding: 40px;
+}
