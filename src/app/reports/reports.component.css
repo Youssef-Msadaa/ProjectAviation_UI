@@ -1,0 +1,106 @@
+.dashboard-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter label {
+  font-weight: bold;
+}
+
+.apply-filters {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.apply-filters:hover {
+  background-color: #45a049;
+}
+
+.summary {
+  margin-bottom: 30px;
+}
+
+.summary h2 {
+  margin-bottom: 20px;
+}
+
+.summary-boxes {
+  display: flex;
+  gap: 15px;
+}
+
+.summary-box {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1;
+  text-align: center;
+}
+
+.summary-box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.data-table {
+  margin-bottom: 30px;
+}
+
+.data-table table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.data-table th,
+.data-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.data-table th {
+  background-color: #f4f4f4;
+}
+
+button {
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+.chart {
+  margin-top: 4px;
+}
+
+.small-chart {
+  width: 90% !important; /* Ensures the chart takes up the full width of the container */
+  max-width: 1000px; /* Adjust the max-width to make the chart smaller */
+  height: 300px; /* Set a specific height to control the size */
+}

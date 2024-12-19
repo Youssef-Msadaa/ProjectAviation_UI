@@ -1,0 +1,98 @@
+<div class="dashboard-container">
+  <h1>Flight Reports Dashboard</h1>
+
+  <!-- Flight Filters Section -->
+  <div class="filters">
+    <div class="filter">
+      <label for="flight-status">Flight Status:</label>
+      <select id="flight-status">
+        <option value="all">All</option>
+        <option value="delayed">Delayed</option>
+        <option value="on-time">On Time</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+    </div>
+
+    <div class="filter">
+      <label for="date-range">Date Range:</label>
+      <input type="date" id="date-start" />
+      <span>to</span>
+      <input type="date" id="date-end" />
+    </div>
+
+    <div class="filter">
+      <label for="airline">Airline:</label>
+      <select id="airline">
+        <option value="all">All Airlines</option>
+        <option value="airline1">Airline 1</option>
+        <option value="airline2">Airline 2</option>
+        <!-- Add more options as necessary -->
+      </select>
+    </div>
+
+    <button class="apply-filters">Apply Filters</button>
+  </div>
+
+  <!-- Flight Summary Section -->
+  <div class="summary">
+    <h2>Summary</h2>
+    <div class="summary-boxes">
+      <div class="summary-box">
+        <h3>Total Flights</h3>
+        <p>500</p>
+      </div>
+      <div class="summary-box">
+        <h3>Delayed Flights</h3>
+        <p>50</p>
+      </div>
+      <div class="summary-box">
+        <h3>On-Time Flights</h3>
+        <p>430</p>
+      </div>
+      <div class="summary-box">
+        <h3>Cancelled Flights</h3>
+        <p>20</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Table Section -->
+  <div class="data-table">
+    <h2>Flight Details</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Flight ID</th>
+          <th>Airline</th>
+          <th>Status</th>
+          <th>Departure</th>
+          <th>Arrival</th>
+          <th>Duration</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example Data Row -->
+        <tr>
+          <td>FL123</td>
+          <td>Airline 1</td>
+          <td>Delayed</td>
+          <td>10:00 AM</td>
+          <td>12:00 PM</td>
+          <td>2h</td>
+          <td>
+            <button>Edit</button>
+            <button>Delete</button>
+          </td>
+        </tr>
+        <!-- More rows can be dynamically rendered here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Chart Section (e.g., Flight Status Distribution) -->
+  <div class="chart">
+    <h2>Flight Status Overview</h2>
+    <canvas id="flightStatusChart" class="small-chart"></canvas>
+  </div>
+</div>

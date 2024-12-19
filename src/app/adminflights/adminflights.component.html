@@ -1,0 +1,31 @@
+<div class="flights-management-container">
+  <h2 class="title">Flight Management</h2>
+
+  <table class="flights-table">
+    <thead>
+      <tr>
+        <th>Flight ID</th>
+        <th>Airline</th>
+        <th>Destination</th>
+        <th>Departure Time</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flight of flights">
+        <td>{{ flight.id }}</td>
+        <td>{{ flight.airline }}</td>
+        <td>{{ flight.destination }}</td>
+        <td>{{ flight.departureTime }}</td>
+        <td>{{ flight.status }}</td>
+        <td>
+          <button class="edit-btn" (click)="editFlight(flight.id)">Edit</button>
+          <button class="delete-btn" (click)="deleteFlight(flight.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

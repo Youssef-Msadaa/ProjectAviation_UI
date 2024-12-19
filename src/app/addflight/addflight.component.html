@@ -1,0 +1,63 @@
+<div class="add-flight-container">
+  <h2 class="title">Add New Flight</h2>
+
+  <form (ngSubmit)="addFlight()" class="flight-form">
+    <div class="form-group">
+      <label for="id">Flight ID:</label>
+      <input
+        type="text"
+        id="id"
+        [(ngModel)]="flight.id"
+        name="id"
+        required
+        placeholder="Enter Flight ID"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="airline">Airline:</label>
+      <input
+        type="text"
+        id="airline"
+        [(ngModel)]="flight.airline"
+        name="airline"
+        required
+        placeholder="Enter Airline Name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="destination">Destination:</label>
+      <input
+        type="text"
+        id="destination"
+        [(ngModel)]="flight.destination"
+        name="destination"
+        required
+        placeholder="Enter Destination"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="departureTime">Departure Time:</label>
+      <input
+        type="datetime-local"
+        id="departureTime"
+        [(ngModel)]="flight.departureTime"
+        name="departureTime"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status:</label>
+      <select id="status" [(ngModel)]="flight.status" name="status" required>
+        <option value="On Time">On Time</option>
+        <option value="Delayed">Delayed</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+    </div>
+
+    <button type="submit" class="submit-btn">Add Flight</button>
+  </form>
+</div>

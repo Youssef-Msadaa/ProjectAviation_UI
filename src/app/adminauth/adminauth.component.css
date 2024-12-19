@@ -1,0 +1,56 @@
+.login-container {
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+  color: #495057;
+  font-family: "Roboto", sans-serif;
+}
+
+.card {
+  border-radius: 15px;
+  width: 28rem;
+  background: #ffffff;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.card h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+input.form-control {
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+}
+
+input.form-control:focus {
+  border-color: #5b9bd5;
+  box-shadow: 0 0 5px rgba(91, 155, 213, 0.5);
+}
+
+button {
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #007bff;
+  transform: scale(1.02);
+}
+
+.text-center span {
+  background-color: transparent;
+  color: #6c757d;
+}
+
+.text-center a {
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.text-center a:hover {
+  color: #0056b3;
+}

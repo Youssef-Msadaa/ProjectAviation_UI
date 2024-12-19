@@ -1,0 +1,70 @@
+<div class="dashboard-container d-flex">
+  <div class="sidebar">
+    <h2 class="text-center mb-4 text-light mt-3">Admin Dashboard</h2>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin" routerLinkActive="active">
+          <i class="fas fa-home me-2"></i> Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/users" routerLinkActive="active">
+          <i class="fas fa-users me-2"></i> Users
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/admin/adduser"
+          routerLinkActive="active"
+        >
+          <i class="fas fa-user-plus me-2"></i> Add Users
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/admin/flights"
+          routerLinkActive="active"
+        >
+          <i class="fas fa-plane me-2"></i> Flights
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/admin/addflight"
+          routerLinkActive="active"
+        >
+          <i class="fas fa-plus me-2"></i> Add Flights
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/admin/reports"
+          routerLinkActive="active"
+        >
+          <i class="fas fa-chart-bar me-2"></i> Reports
+        </a>
+      </li>
+    </ul>
+    <div class="logout-section mt-auto p-3">
+      <button class="btn btn-danger w-100" (click)="logout()">
+        <i class="fas fa-sign-out-alt me-2"></i> Logout
+      </button>
+    </div>
+  </div>
+
+  <div class="content p-4">
+    <div
+      class="content-header d-flex justify-content-between align-items-center mb-4"
+    >
+      <h1>Dashboard Overview</h1>
+      <button class="btn btn-primary">
+        <i class="fas fa-cog me-2"></i> Settings
+      </button>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

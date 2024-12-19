@@ -1,0 +1,49 @@
+<div class="add-user-container">
+  <h2 class="title">Add New User</h2>
+
+  <form class="add-user-form" (ngSubmit)="addUser()">
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        [(ngModel)]="newUser.name"
+        name="name"
+        required
+        placeholder="Enter full name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        [(ngModel)]="newUser.email"
+        name="email"
+        required
+        placeholder="Enter email address"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select
+        id="role"
+        class="form-control"
+        [(ngModel)]="newUser.role"
+        name="role"
+        required
+      >
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
+        <option value="Editor">Editor</option>
+        <option value="Moderator">Moderator</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add User</button>
+  </form>
+</div>
